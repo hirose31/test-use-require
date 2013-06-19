@@ -41,40 +41,50 @@ $VAR1 = [
         ];
 ```
 
-## require.pl ... NG: %T::V is empty
+## require.pl ... OK
 ```
 Name "T::V" used only once: possible typo at ./require.pl line 16.
-import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
-            'carp' => *t::T::carp,
-            'BEGIN' => *t::T::BEGIN,
-            'croak' => *t::T::croak,
-            'V' => *t::T::V,
-            'confess' => *t::T::confess
+            'carp' => *T::carp,
+            'BEGIN' => *T::BEGIN,
+            'v' => *T::v,
+            'croak' => *T::croak,
+            'module_path' => *T::module_path,
+            'confess' => *T::confess,
+            'V' => *T::V
           }
         ];
 $VAR1 = [
-          {}
+          {
+            'bar' => 'BAR',
+            'foo' => 'FOO'
+          }
         ];
 ```
 
-## use-universal-require.pl ... NG: %T::V is empty
+## use-universal-require.pl ... OK
 ```
 Name "T::V" used only once: possible typo at ./use-universal-require.pl line 17.
-import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
-            'carp' => *t::T::carp,
-            'BEGIN' => *t::T::BEGIN,
-            'croak' => *t::T::croak,
-            'import' => *t::T::import,
-            'V' => *t::T::V,
-            'confess' => *t::T::confess
+            'require' => *T::require,
+            'v' => *T::v,
+            'croak' => *T::croak,
+            'import' => *T::import,
+            'confess' => *T::confess,
+            'V' => *T::V,
+            'use' => *T::use,
+            'carp' => *T::carp,
+            'BEGIN' => *T::BEGIN,
+            'module_path' => *T::module_path
           }
         ];
 $VAR1 = [
-          {}
+          {
+            'bar' => 'BAR',
+            'foo' => 'FOO'
+          }
         ];
 ```
 

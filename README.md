@@ -1,6 +1,6 @@
 # result
 
-## use.pl
+## use.pl ... OK
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
@@ -21,7 +21,7 @@ $VAR1 = [
         ];
 ```
 
-## require-begin.pl
+## require-begin.pl ... OK
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
@@ -41,7 +41,7 @@ $VAR1 = [
         ];
 ```
 
-## require.pl
+## require.pl ... NG: %T::V is empty
 ```
 Name "T::V" used only once: possible typo at ./require.pl line 16.
 import from t::T to T at T.pm line 15.
@@ -59,7 +59,7 @@ $VAR1 = [
         ];
 ```
 
-## use-universal-require.pl
+## use-universal-require.pl ... NG: %T::V is empty
 ```
 Name "T::V" used only once: possible typo at ./use-universal-require.pl line 17.
 import from t::T to T at T.pm line 15.
@@ -75,5 +75,26 @@ $VAR1 = [
         ];
 $VAR1 = [
           {}
+        ];
+```
+
+### use-universal-require-begin.pl ... OK
+```
+import from t::T to T at T.pm line 15.
+$VAR1 = [
+          {
+            'carp' => *t::T::carp,
+            'BEGIN' => *t::T::BEGIN,
+            'croak' => *t::T::croak,
+            'import' => *t::T::import,
+            'V' => *t::T::V,
+            'confess' => *t::T::confess
+          }
+        ];
+$VAR1 = [
+          {
+            'bar' => 'BAR',
+            'foo' => 'FOO'
+          }
         ];
 ```

@@ -4,17 +4,20 @@ use strict;
 use warnings;
 
 use Carp;
+use Module::Path qw(module_path);
 
 my $env = 't';
 
 my $pkg_me  = 'T';
 my $pkg_env = $env . '::T';
-eval "require $pkg_env" or croak "require $pkg_env: $!";
-{
-    no strict 'refs';
-    warn "import from $pkg_env to $pkg_me";
-    *{"$pkg_me\::"} = *{"$pkg_env\::"};
-}
+
+my $path = module_path($pkg_env);
+open my $modfh, '<', $path or die $!;
+my $code = do { local $/; <$modfh> };
+close $modfh;
+
+$code =~ s/^package\s${pkg_env};$/package ${pkg_me};/m;
+eval $code;
 
 1;
 

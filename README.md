@@ -1,6 +1,6 @@
 # result
 
-## use.pl ... OK
+## use.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
@@ -21,7 +21,7 @@ $VAR1 = [
         ];
 ```
 
-## require-begin.pl ... OK
+## require-begin.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
@@ -41,7 +41,7 @@ $VAR1 = [
         ];
 ```
 
-## require.pl ... NG: %T::V is empty
+## require.pl
 ```
 Name "T::V" used only once: possible typo at ./require.pl line 16.
 import from t::T to T at T.pm line 15.
@@ -59,7 +59,7 @@ $VAR1 = [
         ];
 ```
 
-## use-universal-require.pl ... NG: %T::V is empty
+## use-universal-require.pl
 ```
 Name "T::V" used only once: possible typo at ./use-universal-require.pl line 17.
 import from t::T to T at T.pm line 15.
@@ -78,7 +78,7 @@ $VAR1 = [
         ];
 ```
 
-### use-universal-require-begin.pl ... OK
+## use-universal-require-begin.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
@@ -98,3 +98,4 @@ $VAR1 = [
           }
         ];
 ```
+

@@ -1,14 +1,15 @@
 # result
 
-## use.pl ... OK
+## use.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
             'carp' => *t::T::carp,
             'BEGIN' => *t::T::BEGIN,
+            'v' => *t::T::v,
             'croak' => *t::T::croak,
-            'import' => *t::T::import,
+            'import' => *T::import,
             'V' => *t::T::V,
             'confess' => *t::T::confess
           }
@@ -21,13 +22,14 @@ $VAR1 = [
         ];
 ```
 
-## require-begin.pl ... OK
+## require-begin.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
             'carp' => *t::T::carp,
             'BEGIN' => *t::T::BEGIN,
+            'v' => *t::T::v,
             'croak' => *t::T::croak,
             'V' => *t::T::V,
             'confess' => *t::T::confess
@@ -41,7 +43,7 @@ $VAR1 = [
         ];
 ```
 
-## require.pl ... NG: %T::V is empty
+## require.pl
 ```
 Name "T::V" used only once: possible typo at ./require.pl line 16.
 import from t::T to T at T.pm line 15.
@@ -49,44 +51,55 @@ $VAR1 = [
           {
             'carp' => *t::T::carp,
             'BEGIN' => *t::T::BEGIN,
+            'v' => *t::T::v,
             'croak' => *t::T::croak,
-            'V' => *t::T::V,
-            'confess' => *t::T::confess
+            'confess' => *t::T::confess,
+            'V' => *t::T::V
           }
         ];
 $VAR1 = [
-          {}
+          {
+            'bar' => 'BAR',
+            'foo' => 'FOO'
+          }
         ];
 ```
 
-## use-universal-require.pl ... NG: %T::V is empty
+## use-universal-require.pl
 ```
 Name "T::V" used only once: possible typo at ./use-universal-require.pl line 17.
 import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
-            'carp' => *t::T::carp,
-            'BEGIN' => *t::T::BEGIN,
+            'require' => *T::require,
+            'v' => *t::T::v,
             'croak' => *t::T::croak,
-            'import' => *t::T::import,
+            'import' => *T::import,
+            'confess' => *t::T::confess,
             'V' => *t::T::V,
-            'confess' => *t::T::confess
+            'use' => *T::use,
+            'carp' => *t::T::carp,
+            'BEGIN' => *t::T::BEGIN
           }
         ];
 $VAR1 = [
-          {}
+          {
+            'bar' => 'BAR',
+            'foo' => 'FOO'
+          }
         ];
 ```
 
-### use-universal-require-begin.pl ... OK
+## use-universal-require-begin.pl
 ```
 import from t::T to T at T.pm line 15.
 $VAR1 = [
           {
             'carp' => *t::T::carp,
             'BEGIN' => *t::T::BEGIN,
+            'v' => *t::T::v,
             'croak' => *t::T::croak,
-            'import' => *t::T::import,
+            'import' => *T::import,
             'V' => *t::T::V,
             'confess' => *t::T::confess
           }
@@ -98,3 +111,4 @@ $VAR1 = [
           }
         ];
 ```
+
